@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mapa Interativo</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+  </style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button id="addPinBtn" class="btn">Adicionar</button>
+  <button id="movePinBtn" class="btn">Mover</button>
+  <button id="saveBtn" class="btn">Salvar</button>
+</div>
+
+<!-- Layers panel (top-right) -->
+<div class="layers-panel" id="layersPanel">
+  <div class="layers-header">Camadas</div>
+  <div class="layers-list" id="layersList">
+    <!-- checkboxes inserted by script -->
+  </div>
+</div>
+
+<div id="map"></div>
+
+<!-- Color picker modal -->
+<div id="colorPickerModal" style="display:none;">
+  <div class="color-picker-backdrop"></div>
+  <div class="color-picker-panel">
+    <h3>Escolher cor do pino</h3>
+    <div class="color-row">
+      <input type="color" id="colorPicker_input_color" value="#e74c3c">
+      <input type="text" id="colorPicker_input_hex" placeholder="#rrggbb">
+    </div>
+    <div class="color-actions">
+      <button id="colorPicker_confirm" class="btn">Confirmar</button>
+      <button id="colorPicker_cancel" class="btn">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit pin modal -->
+<div id="editModal" aria-hidden="true">
+  <div class="color-picker-backdrop"></div>
+  <div class="color-picker-panel">
+    <h3>Editar / Excluir Pino</h3>
+    <div class="color-row" style="flex-direction:column;align-items:stretch;">
+      <input type="text" id="edit_name" placeholder="Nome">
+      <input type="text" id="edit_link" placeholder="Link (opcional)" style="margin-top:8px;">
+      <textarea id="edit_description" placeholder="Descrição" rows="3" style="margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);"></textarea>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+        <input type="color" id="edit_color" value="#e74c3c">
+        <input type="text" id="edit_color_hex" placeholder="#rrggbb" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);">
+      </div>
+    </div>
+    <div class="color-actions" style="margin-top:10px;">
+      <button id="edit_save" class="btn">Salvar</button>
+      <button id="edit_delete" class="btn" style="background:rgba(255,0,0,0.9);color:white">Excluir</button>
+      <button id="edit_cancel" class="btn">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
