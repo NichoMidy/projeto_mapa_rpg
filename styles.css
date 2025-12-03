@@ -20,7 +20,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, system-ui
 
 /* Toolbar (glass, minimalist) */
 .toolbar{
-  position:fixed;left:20px;top:20px;z-index:10000;display:flex;flex-direction:column;gap:10px;padding:10px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(6px);box-shadow:0 6px 20px rgba(2,6,23,0.6);
+  position:fixed;left:12px;top:12px;z-index:10000;display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(2,6,23,0.55);
 }
 
 /* Layers panel (top-right) */
@@ -32,15 +32,25 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, system-ui
 .layer-opacity{margin-left:auto;width:60px}
 
 .btn{
-  appearance:none;border:0;padding:10px 14px;border-radius:10px;background:var(--btn-bg);color:var(--white);font-weight:600;letter-spacing:0.2px;cursor:pointer;transition:all .16s ease;min-width:90px;text-align:center;font-size:14px;border:1px solid rgba(255,255,255,0.03);
+  appearance:none;border:0;padding:8px 10px;border-radius:8px;background:var(--btn-bg);color:var(--white);font-weight:600;letter-spacing:0.2px;cursor:pointer;transition:all .12s ease;min-width:76px;text-align:center;font-size:13px;border:1px solid rgba(255,255,255,0.03);
 }
+.toggle-btn{width:36px;height:36px;padding:0;font-size:16px;display:flex;align-items:center;justify-content:center}
+
+.toolbar-controls{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.toolbar.collapsed .toolbar-controls{display:none}
 .btn:hover{transform:translateY(-3px);background:var(--btn-hover)}
 .btn.active{background:var(--accent);color:#06202a;box-shadow:0 8px 20px rgba(125,211,252,0.12);transform:translateY(-3px)}
 
 /* Popup styling */
-.leaflet-popup-content-wrapper{background:linear-gradient(180deg,#0d1113,#0b0f11);color:var(--white);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.03)}
+.leaflet-popup-content-wrapper{background:linear-gradient(180deg,#0d1113,#0b0f11);color:var(--white);border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,0.03)}
 .leaflet-popup-tip{background:linear-gradient(180deg,#0d1113,#0b0f11)}
-.leaflet-popup-content a{color:var(--accent);font-weight:600;text-decoration:none}
+.leaflet-popup-content a{color:var(--accent);font-weight:700;text-decoration:none}
+
+/* Popup content tweaks: larger title, tighter spacing */
+.popup-content{padding:0;margin:0}
+.popup-title{display:block;font-size:16px;font-weight:800;color:var(--accent);text-decoration:none;margin-bottom:6px}
+.popup-title:hover{text-decoration:underline}
+.popup-desc{font-size:13px;line-height:1.35;margin:0;padding:0;color:var(--white)}
 
 /* Custom pin */
 .custom-pin{line-height:0}

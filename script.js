@@ -94,7 +94,10 @@ function normalizeLink(link){
 // Helper to create consistent popup content
 function makePopupContent(name, description, link) {
   const href = normalizeLink(link);
-  return `<b>${name}</b><br>${description}${href ? `<br><a href="${href}" target="_blank" rel="noopener noreferrer">Abrir</a>` : ""}`;
+  // Structured popup: clickable title when link present, description below
+  const title = href ? `<a class="popup-title" href="${href}" target="_blank" rel="noopener noreferrer">${name}</a>` : `<span class="popup-title">${name}</span>`;
+  const desc = description ? `<div class="popup-desc">${description}</div>` : '';
+  return `<div class="popup-content">${title}${desc}</div>`;
 }
 
 // Default pin color
@@ -466,9 +469,26 @@ function attachMarkerHandlers(marker){
 const addPinBtn = document.getElementById("addPinBtn");
 const movePinBtn = document.getElementById("movePinBtn");
 const saveBtn = document.getElementById("saveBtn");
+const toolbar = document.getElementById('toolbar');
+const toolbarToggleBtn = document.getElementById('toolbarToggleBtn');
+const toolbarControls = document.getElementById('toolbarControls');
 
 let addMode = false;
 let moveMode = false;
+
+// Toolbar toggle: start collapsed (buttons hidden) and toggle on button click
+if(toolbar){
+  // ensure default collapsed state
+  toolbar.classList.add('collapsed');
+}
+if(toolbarToggleBtn){
+  toolbarToggleBtn.addEventListener('click', ()=>{
+    if(!toolbar) return;
+    toolbar.classList.toggle('collapsed');
+    const expanded = !toolbar.classList.contains('collapsed');
+    toolbarToggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  });
+}
 
 // ----------------------------------
 // CARREGAR PINS

@@ -11,10 +11,13 @@
 </head>
 <body>
 
-<div class="toolbar">
-  <button id="addPinBtn" class="btn">Adicionar</button>
-  <button id="movePinBtn" class="btn">Mover</button>
-  <button id="saveBtn" class="btn">Salvar</button>
+<div class="toolbar collapsed" id="toolbar">
+  <button id="toolbarToggleBtn" class="btn toggle-btn" title="Mostrar / Ocultar">☰</button>
+  <div class="toolbar-controls" id="toolbarControls">
+    <button id="addPinBtn" class="btn">Adicionar</button>
+    <button id="movePinBtn" class="btn">Mover</button>
+    <button id="saveBtn" class="btn">Salvar</button>
+  </div>
 </div>
 
 <!-- Layers panel (top-right) -->
